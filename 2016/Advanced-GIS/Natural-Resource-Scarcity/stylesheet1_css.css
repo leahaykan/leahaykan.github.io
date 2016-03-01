@@ -1,0 +1,14 @@
+h1 {
+    color:red;
+    font-size: 45px;
+}
+#page-wrap{
+    background-color: aquamarine;
+    margin: 0 auto;
+    padding: 10px;
+}
+#compare-text{
+    color: black;
+    font-size: 25px;
+    font-stretch: semi-expanded;
+}
