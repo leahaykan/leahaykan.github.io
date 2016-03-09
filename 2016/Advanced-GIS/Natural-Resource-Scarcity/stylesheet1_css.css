@@ -5,7 +5,7 @@ h1 {
     font-weight:bold;
     vertical-align: middle;
     letter-spacing:1px;
-    text-decoration: blink;
+    text-decoration:overline;
 }
 #page-wrap{
     background-color: #FF4000;
