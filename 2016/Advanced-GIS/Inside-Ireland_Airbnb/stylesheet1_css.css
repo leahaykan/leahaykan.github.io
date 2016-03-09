@@ -1,5 +1,5 @@
 h1 {
-    color:#424242;
+    color:white;
 font-family: Spinnaker;
 	font-size: 38px;
 	font-style: normal;
@@ -13,7 +13,7 @@ font-family: Spinnaker;
     text-shadow: #000 -1px -1px 0;
 }
 #page-wrap{
-    background-color: black;
+    background-color: #2E2E2E;
     border-color:#136400;
     border-style: outset;
     border-width: 8px;
