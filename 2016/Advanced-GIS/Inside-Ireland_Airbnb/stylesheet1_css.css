@@ -1,16 +1,15 @@
 h1 {
-    color:#4B088A;
+    color:white;
     font-size: 38px;
     font-variant: small-caps;
-    font-weight:bold;
+    font-weight:bolder;
     vertical-align: middle;
     letter-spacing:1px;
-    text-decoration:overline;
     text-align: center;
-    word-spacing: 1px;
+    word-spacing: 5px;
 }
 #page-wrap{
-    background-color: white;
+    background-color: black;
     border-color:#136400;
     border-style: outset;
     border-width: 10px;
