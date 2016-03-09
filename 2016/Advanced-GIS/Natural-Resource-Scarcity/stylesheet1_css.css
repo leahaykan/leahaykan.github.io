@@ -10,7 +10,10 @@ h1 {
 }
 #page-wrap{
     background-color: #FF4000;
-    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
