@@ -1,7 +1,13 @@
 h1 {
-font-size: 30px;
-color: black;
-);
+    color:#4B088A;
+    font-size: 38px;
+    font-variant: small-caps;
+    font-weight:bold;
+    vertical-align: middle;
+    letter-spacing:1px;
+    text-decoration:overline;
+    text-align: center;
+    word-spacing: 1px;
 }
 #page-wrap{
     background-color: white;
