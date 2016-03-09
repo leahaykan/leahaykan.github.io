@@ -3,9 +3,11 @@ h1 {
     font-size: 45px;
 }
 #page-wrap{
-    background-color: aquamarine;
+    background-color: #FF4000;
     margin: 0 auto;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-style: solid;
 }
 #compare-text{
     color: black;
