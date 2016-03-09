@@ -1,7 +1,10 @@
 h1 {
     color:#B40486;
     font-size: 45px;
-    font-variant: small caps;
+    font-variant: small-caps;
+    font-weight:bold;
+    vertical-align: middle;
+    letter-spacing:5px;
 }
 #page-wrap{
     background-color: #FF4000;
