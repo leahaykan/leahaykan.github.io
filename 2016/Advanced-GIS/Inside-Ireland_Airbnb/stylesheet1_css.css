@@ -1,7 +1,10 @@
 h1 {
-    color:white;
-    font-size: 38px;
-    font-variant: small-caps;
+    color:#424242;
+font-family: Spinnaker;
+	font-size: 38px;
+	font-style: normal;
+	line-height: 26.4px;    
+	font-variant: small-caps;
     font-weight:bolder;
     vertical-align: middle;
     letter-spacing:1px;
