@@ -7,13 +7,13 @@ h1 {
     letter-spacing:1px;
     text-align: center;
     word-spacing: 5px;
-    text-shadow: rgba(255, 255, 255, 0.5) 1px 1px 0;
+    text-shadow: #000 -1px -1px 0;
 }
 #page-wrap{
     background-color: black;
     border-color:#136400;
     border-style: outset;
-    border-width: 10px;
+    border-width: 8px;
     margin: 0 auto;
     padding: 10px;
 }
