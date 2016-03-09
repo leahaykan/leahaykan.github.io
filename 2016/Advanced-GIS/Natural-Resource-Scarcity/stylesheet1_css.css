@@ -19,7 +19,9 @@ h1 {
     padding-top: 50px;
     padding-bottom: 50px;
     border-style: inset;
-    border-color: #4B088A ;
+    border-color: #4B088A;
+    background-image: url("gradient_bg.png");
+    background-repeat: repeat-x;
 }
 #compare-text{
     color: black;
