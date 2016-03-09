@@ -7,6 +7,7 @@ h1 {
     letter-spacing:1px;
     text-align: center;
     word-spacing: 5px;
+    text-shadow: rgba(255, 255, 255, 0.5) 1px 1px 0;
 }
 #page-wrap{
     background-color: black;
