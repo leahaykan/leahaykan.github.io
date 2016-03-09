@@ -3,7 +3,10 @@ h1 {
     font-size: 45px;
 }
 #page-wrap{
-    background-color: aquamarine;
+    background-color: white;
+    border-color:#136400;
+    border-style: outset;
+    border-width: 10px;
     margin: 0 auto;
     padding: 10px;
 }
