@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head>
+  <head>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
      <title>first</title>
-        <link rel='stylesheet' href='stylesheet1_css.css' media= "screen" />
-    </head>
-    <body>
+     <link rel='stylesheet' href='stylesheet1_css.css' media= "screen" />
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <script>
+    $(document).ready(function () {
+        cartodb.createVis('map', https://aykal055.cartodb.com/api/v2/viz/58806588-de87-11e5-b02f-0e31c9be1b51/viz.json);
+    });
+</script>
+    </head>    
+   <body>
+    <div id="map">
+        
+    </div>
+        
+        
+        
+        
+        
     <div id='page-wrap'>
         <h1>Ireland on Airbnb | From a Castle to a Hut </h1>
         
