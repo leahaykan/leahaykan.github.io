@@ -18,17 +18,46 @@
       }
     </style>
     <script>
-    
-    function sayhi(name){
-  alert('Hi' + name);
-    }
-  
-    $(document).ready(function () {
-        cartodb.createVis("map", 'https://aykal055.cartodb.com/api/v2/viz/58806588-de87-11e5-b02f-0e31c9be1b51/viz.json');
-    });
-</script>
+      var dataLayer;
+      $(document).ready(function () {
+        //
+        // Initialize map from CartoDB: create the map and store the data layer for later
+        //
+        cartodb.createVis('map','https://aykal055.cartodb.com/api/v2/viz/58806588-de87-11e5-b02f-0e31c9be1b51/viz.json')
+          .done(function (vis, layers) {
+            // Store the data layer for later:
+            //  * layers[0] is the base layer (eg OpenStreetMap)
+            //  * layers[1] is where all of your data layers go, and they're stored as "sublayers". The first one is numbered 0, the second is 1, etc. In this case we're getting the first sublayer.
+            dataLayer = layers[1].getSubLayer(0);
+          });
+        //
+        // Initialize the borough picker: add an event handler to watch for changes
+        //
+        $('.neighbourhood').change(function () {
+          var neighbourhood = $(this).val();
+          var sql;
+          if (neighbourhood === 'all') {
+            // if borough is 'all', reset SQL to the original
+            sql = "SELECT * FROM listings";
+          }
+          else {
+            // else, select only features with the borough field set to the chosen borough
+            sql = "SELECT * FROM listings WHERE neighbourhood = '" + neighbourhood + "'";
+          }
+          dataLayer.setSQL(sql);
+        });
+      });
+    </script>
     </head>
   <body>
     <div id="map"></div>
+    <select class="neighborhood">
+    <option value="all">All Neighborhoods</option>
+    <option value="DN LAOGHAIRE-RATHDOWN">DN LAOGHAIRE-RATHDOWN</option>
+    <option value="DUBLIN CITY">DUBLIN CITY</option>
+    <option value="FINGAL">FINGAL</option>
+    <option value="SOUTH DUBLIN">SOUTH DUBLIN</option>
+    <option value="">other</option>
+</select>
   </body>
 </html>
