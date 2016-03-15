@@ -38,11 +38,11 @@
           var sql;
           if (neighbourhood === 'all') {
             // if borough is 'all', reset SQL to the original
-            sql = "SELECT * FROM listings";
+            sql = "SELECT * FROM ireland_airbnb_listings";
           }
           else {
             // else, select only features with the borough field set to the chosen borough
-            sql = "SELECT * FROM listings WHERE neighbourhood = '" + neighbourhood + "'";
+            sql = "SELECT * FROM ireland_airbnb_listings WHERE neighbourhood = '" + neighbourhood + "'";
           }
           dataLayer.setSQL(sql);
         });
