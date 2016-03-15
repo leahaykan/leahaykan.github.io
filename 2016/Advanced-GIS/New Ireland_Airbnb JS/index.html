@@ -11,7 +11,12 @@
         padding: 0;
         width: 100%;
       }
-
+    .neighbourhood-picker {
+        position: bottom;
+        top: 20px;
+        right: 20px;
+       background: grey;
+      }
       #map {
         height: 100%;
         width: 100%;
@@ -33,7 +38,7 @@
         //
         // Initialize the borough picker: add an event handler to watch for changes
         //
-        $('.neighbourhood').change(function () {
+        $('.neighbourhood-picker').change(function () {
           var neighbourhood = $(this).val();
           var sql;
           if (neighbourhood === 'all') {
@@ -48,16 +53,17 @@
         });
       });
     </script>
+    
     </head>
+  
   <body>
     <div id="map"></div>
-    <select class="neighborhood">
+    <select class="neighborhood-picker">
     <option value="all">All Neighborhoods</option>
     <option value="DN LAOGHAIRE-RATHDOWN">DN LAOGHAIRE-RATHDOWN</option>
     <option value="DUBLIN CITY">DUBLIN CITY</option>
     <option value="FINGAL">FINGAL</option>
     <option value="SOUTH DUBLIN">SOUTH DUBLIN</option>
-    <option value="">other</option>
 </select>
   </body>
 </html>
