@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>     
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>NYC Disconnected Youth Map</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+
+  <style>
+    html, body, #container {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      }
+    body {
+      padding-top: 50px;
+    }
+    #map {
+      width: 100%;
+      height: 500px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.55);
+      margin: 0 auto;
+    }
+    .community_district-picker {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+    }      
+    .main {
+      text-align: center;
+    }    
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Narrow the Gap</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Mapping Youth Disconnection</a></li>
+          <li><a href="http://leahaykan.github.io/America%20page/#contact">America</a></li>
+          <li><a href="http://leahaykan.github.io/Narrow%20the%20Gap%20page/">New York City</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="container main">
+    <h1>Targeting Sectors to Narrow the Gap</h1>
+    <p class="lead">A Look Inside Disconnected Youth in New York City </p>
+     
+    <div id='map'></div>
+
+    <div class='community_district-picker'>
+      <label><input type="checkbox" id="chbox-disc-youth" value="first_checkbox" checked> Disconnected Youth</label>
+      <label><input type="checkbox" id="chbox-read-score" value="second_checkbox"> Reading Score</label>
+      <label><input type="checkbox" id="chbox-juve-detent" value="first_third"> Juvenile Detention</label>
+    </div>      
+  </div>
+
+
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"> </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
+
+  <script>
+    // the function is called when a checkbox is clicked
+    // if the box becomes checked it shows the associated sublayer
+    // if the box becomes unchecked it hides the associated sublayer
+    checkboxListener = function(e) {
+      var chbox = e.srcElement;
+      var layer = checkbox2Layer[chbox.id];
+      if (chbox.checked == true) {
+        layer.show();
+      }
+      else {
+        layer.hide();
+      }
+    }
+
+    var checkbox2Layer;
+    function main() {
+      cartodb.createVis('map', 'https://thenewschool.cartodb.com/u/laykan55/api/v2/viz/2b2eb6fe-17b0-11e6-a926-0e3ff518bd15/viz.json')
+        .done(function (vis, layers) {
+          // get the sublayers from layers[1]
+          disconnectedYouthLayer = layers[1].getSubLayer(0);
+          readingScoreLayer = layers[1].getSubLayer(1);
+          juvenileDetentionLayer = layers[1].getSubLayer(2);
+          districtNumbersLayer = layers[1].getSubLayer(2);
+
+          // association between the checkbox id's and the map sublayers
+          checkbox2Layer = {
+            "chbox-disc-youth": disconnectedYouthLayer, 
+            "chbox-read-score": readingScoreLayer,
+            "chbox-juve-detent": juvenileDetentionLayer
+          };
+
+          // go over all checkboxes
+          for (chboxId in checkbox2Layer) {
+            var chbox = document.getElementById(chboxId)
+            // if the box is checked show the layers, otherwise hide it
+            if (!chbox.checked) {
+              checkbox2Layer[chboxId].hide();
+            }
+            // make the layers listen to the state changes of checkboxes
+            chbox.addEventListener('change', checkboxListener);            
+          }
+
+        }).error(function(err) {
+          console.log(err);
+        });
+    }
+
+    window.onload = main;
+  </script>
+
+</body>
+</html>
