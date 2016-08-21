@@ -93,15 +93,27 @@
       }
     }
 
+    var options = {
+      layer_selector: false
+    }
+
     var checkbox2Layer;
     function main() {
-      cartodb.createVis('map', 'https://thenewschool.cartodb.com/u/laykan55/api/v2/viz/2b2eb6fe-17b0-11e6-a926-0e3ff518bd15/viz.json')
+      // cartodb.createVis('map', 'https://thenewschool.cartodb.com/u/laykan55/api/v2/viz/2b2eb6fe-17b0-11e6-a926-0e3ff518bd15/viz.json', options)
+      // cartodb.createVis('map', 'https://team.carto.com/u/stephaniemongon/api/v2/viz/16899bb6-c9f8-43fa-accd-a3edd5b553e2/viz.json', options)
+      cartodb.createVis('map', 'https://team.carto.com/u/stephaniemongon/api/v2/viz/5fadec6a-6648-11e6-8b36-0ee66e2c9693/viz.json', options)
         .done(function (vis, layers) {
           // get the sublayers from layers[1]
-          disconnectedYouthLayer = layers[1].getSubLayer(0);
-          readingScoreLayer = layers[1].getSubLayer(1);
-          juvenileDetentionLayer = layers[1].getSubLayer(2);
-          districtNumbersLayer = layers[1].getSubLayer(2);
+          disconnectedYouthLayer = layers[1].getSubLayer(0); // red
+          readingScoreLayer = layers[1].getSubLayer(1); // purple
+          juvenileDetentionLayer = layers[1].getSubLayer(2);  // blue
+          districtNumbersLayer = layers[1].getSubLayer(3); // yellow = always showing/no checkbox
+
+          // working:
+          // districtNumbersLayer.hide();
+          // readingScoreLayer.hide();
+          // juvenileDetentionLayer.hide();
+
 
           // association between the checkbox id's and the map sublayers
           checkbox2Layer = {
@@ -110,7 +122,7 @@
             "chbox-juve-detent": juvenileDetentionLayer
           };
 
-          // go over all checkboxes
+          // // go over all checkboxes
           for (chboxId in checkbox2Layer) {
             var chbox = document.getElementById(chboxId)
             // if the box is checked show the layers, otherwise hide it
@@ -131,3 +143,4 @@
 
 </body>
 </html>
+
